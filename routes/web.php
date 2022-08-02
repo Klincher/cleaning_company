@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients');
+Route::post('/clients', [App\Http\Controllers\ClientController::class, 'store'])->name('clients.store');
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders');
+Route::post('/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
