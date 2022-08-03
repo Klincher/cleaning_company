@@ -11,11 +11,13 @@ class OrderController extends Controller
 {
     public function index()
     {
+        $order = null;
+
         if ($id = session('order_id')) {
             $order = Order::find($id);
-            return view('welcome', ['order' => $order]);
         }
-        return view('welcome');
+
+        return view('welcome', ['order' => $order]);
     }
 
     public function store(Request $request)
