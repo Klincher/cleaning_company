@@ -11,11 +11,16 @@ class OrderController extends Controller
 {
     public function index()
     {
+        if ($id = session('order_id')) {
+            $order = Order::find($id);
+            return view('welcome', ['order' => $order]);
+        }
         return view('welcome');
     }
 
     public function store(Request $request)
     {
+
         $options = ['area', 'rooms', 'bathrooms', 'kitchens', 'fridges', 'wardrobes', 'animals', 'adults', 'children'];
         $sum = 0;
 
@@ -50,6 +55,8 @@ class OrderController extends Controller
         $order->adults = $request->adults;
         $order->children = $request->children;
         $order->save();
+
+        session(['order_id' => $order->id]);
 
         return redirect()->route('result', ['id' => $order->id]);
     }

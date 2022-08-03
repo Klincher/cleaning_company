@@ -16,9 +16,7 @@ use App\Http\Controllers\ResultController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
