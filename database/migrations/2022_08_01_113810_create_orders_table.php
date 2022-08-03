@@ -15,19 +15,20 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client_id');
-            $table->string('status')->default('created');
-            $table->bigInteger('sum');
+            $table->bigInteger('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->enum('status', ['created', 'paid', 'completed', 'canceled']);//enum
+            $table->double('sum');
             $table->string('address');
-            $table->bigInteger('area');
-            $table->bigInteger('rooms');
-            $table->float('bathrooms');
-            $table->bigInteger('kitchens');
-            $table->bigInteger('fridges');
-            $table->bigInteger('wardrobes');
-            $table->bigInteger('animals');
-            $table->bigInteger('adults');
-            $table->bigInteger('children');
+            $table->integer('area');
+            $table->integer('rooms');
+            $table->double('bathrooms');
+            $table->integer('kitchens');
+            $table->integer('fridges');
+            $table->integer('wardrobes')->default(0);
+            $table->integer('animals')->default(0);
+            $table->integer('adults')->default(0);
+            $table->integer('children')->default(0);
             $table->timestamps();
         });
     }

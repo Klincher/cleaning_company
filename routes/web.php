@@ -17,7 +17,7 @@ use App\Http\Controllers\ClientController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,10 +27,12 @@ require __DIR__ . '/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('clients')->group(function () {
+    Route::get('/', [App\Http\Controllers\ClientController::class, 'index'])->name('clients.index');
+    Route::post('/', [App\Http\Controllers\ClientController::class, 'store'])->name('clients.store');
+});
 
-Route::get('/clients', [App\Http\Controllers\ClientController::class, 'index'])->name('clients');
-Route::post('/clients', [App\Http\Controllers\ClientController::class, 'store'])->name('clients.store');
-
-Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders');
-Route::post('/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+Route::prefix('orders')->group(function () {
+    Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+    Route::post('/', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+});

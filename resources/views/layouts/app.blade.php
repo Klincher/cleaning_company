@@ -44,12 +44,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('clients') }}">Clients</a>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('orders') }}">Orders</a>
-                        </li>
+                            <a class="nav-link" href="{{ route('orders.index') }}">Orders</a>
+                        </li> --}}
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -87,7 +87,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
