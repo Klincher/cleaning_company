@@ -55,12 +55,21 @@ class OrderController extends Controller
             $sum += (int) $request->children * $price;
         }
 
-        $client = new Client;
-        $client->phone = $request->phone;
-        $client->first_name = $request->first_name;
-        $client->last_name = $request->last_name;
-        $client->email = $request->email;
-        $client->save();
+        $client = Client::firstOrCreate(
+            ['phone' => $request->phone],
+            [
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+            ]
+        );
+
+        // $client = new Client;
+        // $client->phone = $request->phone;
+        // $client->first_name = $request->first_name;
+        // $client->last_name = $request->last_name;
+        // $client->email = $request->email;
+        // $client->save();
 
         $order = new Order;
         $order->client_id = $client->id;
