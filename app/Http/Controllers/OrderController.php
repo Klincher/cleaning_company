@@ -51,6 +51,6 @@ class OrderController extends Controller
         $order->children = $request->children;
         $order->save();
 
-        return redirect()->route('welcome');
+        return redirect()->route('result', ['id' => $order->id]);
     }
 }

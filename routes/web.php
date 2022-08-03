@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,5 @@ Route::prefix('orders')->group(function () {
     Route::get('/', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
     Route::post('/', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
 });
+
+Route::get('result/{id}', [ResultController::class, 'index'])->name('result');

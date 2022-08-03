@@ -5,7 +5,7 @@
     @csrf
     <div class="container">
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6">
 
                 <label for="phone">Phone</label>
                 <input class="form-control" style="height: 30px" type="text" name="phone" required
@@ -85,12 +85,6 @@
                         <div class="col-md-6 mt-2">
                             <div class="d-flex justify-content-start">
                                 <button class="btn btn-primary" type="submit" name="save">Calculate order</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 mt-2">
-                            <div class="d-flex justify-content-end">
-                                <p>Sum: </p>
                             </div>
                         </div>
                     </div>
