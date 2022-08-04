@@ -21,10 +21,10 @@ return new class extends Migration
             $table->double('sum');
             $table->string('address');
             $table->integer('area');
-            $table->integer('rooms');
-            $table->double('bathrooms');
-            $table->integer('kitchens');
-            $table->integer('fridges');
+            $table->integer('rooms')->default(0);
+            $table->double('bathrooms')->default(0);
+            $table->integer('kitchens')->default(0);
+            $table->integer('fridges')->default(0);
             $table->integer('wardrobes')->default(0);
             $table->integer('animals')->default(0);
             $table->integer('adults')->default(0);

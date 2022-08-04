@@ -11,13 +11,15 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $order = null;
+        $rooms = ['1 room', '2 rooms', '3 rooms', '4 rooms', '5 rooms', '6 rooms', '7 rooms', '8 rooms', '9 rooms', '10 rooms'];
+        $bathrooms = ['0.5' => 'Toilet', '1' => 'Bathroom', '1.5' => 'Combined bathroom'];
+        $kitchens = ['1 kitchen', '2 kitchens', '3 kitchens', '4 kitchens', '5 kitchens'];
 
         if ($id = session('order_id')) {
             $order = Order::find($id);
         }
 
-        return view('welcome', ['order' => $order]);
+        return view('welcome', ['order' => $order, 'rooms' => $rooms, 'bathrooms' => $bathrooms, 'kitchens' => $kitchens]);
     }
 
     public function store(Request $request)
@@ -48,14 +50,14 @@ class OrderController extends Controller
         $order->sum = $sum;
         $order->address = $request->address;
         $order->area = $request->area;
-        $order->rooms = $request->rooms;
-        $order->bathrooms = $request->bathrooms;
-        $order->kitchens = $request->kitchens;
-        $order->fridges = $request->fridges;
-        $order->wardrobes = $request->wardrobes;
-        $order->animals = $request->animals;
-        $order->adults = $request->adults;
-        $order->children = $request->children;
+        $order->rooms = $request->rooms ?? 0;
+        $order->bathrooms = $request->bathrooms ?? 0;
+        $order->kitchens = $request->kitchens ?? 0;
+        $order->fridges = $request->fridges ?? 0;
+        $order->wardrobes = $request->wardrobes ?? 0;
+        $order->animals = $request->animals ?? 0;
+        $order->adults = $request->adults ?? 0;
+        $order->children = $request->children ?? 0;
         $order->save();
 
         session(['order_id' => $order->id]);

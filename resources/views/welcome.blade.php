@@ -9,76 +9,74 @@
 
                 <label for="phone">Phone</label>
                 <input class="form-control" style="height: 30px" type="text" name="phone" required
-                    placeholder="enter Phone">
-                <label for="phone">First Name</label>
+                    placeholder="enter Phone" @if (!empty($order)) value="{{ $order->client->phone }}" @endif>
+
+                <label for="first_name">First Name</label>
                 <input class="form-control" style="height: 30px" type="text" name="first_name" required
-                    placeholder="enter First Name">
-                <label for="phone">Last Name</label>
+                    placeholder="enter First Name" @if (!empty($order)) value="{{ $order->client->first_name }}" @endif>
+
+                <label for="last_name">Last Name</label>
                 <input class="form-control" style="height: 30px" type="text" name="last_name" required
-                    placeholder="ente Last Name">
-                <label for="phone">Email</label>
+                    placeholder="ente Last Name" @if (!empty($order)) value="{{ $order->client->last_name }}" @endif>
+
+                <label for="email">Email</label>
                 <input class="form-control" style="height: 30px" type="email" name="email" required
-                    placeholder="enter Email">
+                    placeholder="enter Email" @if (!empty($order)) value="{{ $order->client->email }}" @endif>
+
             </div>
 
             <div class="col-md-6">
                 <label for="address">Address</label>
                 <input class="form-control" style="height: 30px" type="text" name="address" required
-                    placeholder="enter Address">
+                    placeholder="enter Address" @if (!empty($order)) value="{{ $order->address }}" @endif>
 
                 <label for="area">Area</label>
                 <input class="form-control" style="height: 30px" type="number" name="area" required
-                    placeholder="enter Area">
+                    placeholder="enter Area" @if (!empty($order)) value="{{ $order->area }}" @endif>
 
                 <label for="rooms">Rooms</label>
                 <select class="form-control" name="rooms">
-                    <option value="1">1 room</option>
-                    <option value="2">2 rooms</option>
-                    <option value="3">3 rooms</option>
-                    <option value="4">4 rooms</option>
-                    <option value="5">5 rooms</option>
-                    <option value="6">6 rooms</option>
-                    <option value="7">7 rooms</option>
-                    <option value="8">8 rooms</option>
-                    <option value="9">9 rooms</option>
-                    <option value="10">10 rooms</option>
+                    @foreach ($rooms as $key => $room)
+                    <option value="{{ $key + 1 }}" @if (!empty($order) && $order->rooms === $key + 1) selected
+                        @endif>{{ $room }}</option>
+                    @endforeach
                 </select>
 
                 <label for="bathrooms">Bathrooms</label>
                 <select class="form-control" name="bathrooms">
-                    <option value="0.5">Toilet</option>
-                    <option value="1">Bathroom</option>
-                    <option value="1.5">Combined bathroom</option>
+                    @foreach ($bathrooms as $key => $bathroom)
+                    <option value="{{ $key }}" @if (!empty($order) && $order->bathrooms === floatval($key)) selected
+                        @endif>{{ $bathroom }}</option>
+                    @endforeach
                 </select>
 
                 <label for="kitchens">Kitchens</label>
                 <select class="form-control" name="kitchens">
-                    <option value="1">1 kitchen</option>
-                    <option value="2">2 kitchens</option>
-                    <option value="3">3 kitchens</option>
-                    <option value="4">4 kitchens</option>
-                    <option value="5">5 kitchens</option>
+                    @foreach ($kitchens as $key => $kitchen)
+                    <option value="{{ $key + 1 }}" @if (!empty($order) && $order->kitchens === $key + 1) selected
+                        @endif>{{ $kitchen }}</option>
+                    @endforeach
                 </select>
 
                 <label for="fridges">Fridges</label>
-                <input class="form-control" style="height: 30px" type="number" name="fridges" required
-                    placeholder="enter Fridges">
+                <input class="form-control" style="height: 30px" type="number" name="fridges"
+                    placeholder="enter Fridges" @if (!empty($order)) value="{{ $order->fridges }}" @endif>
 
                 <label for="wardrobes">Wardrobes</label>
-                <input class="form-control" style="height: 30px" type="number" name="wardrobes" required
-                    placeholder="enter Wardrobes">
+                <input class="form-control" style="height: 30px" type="number" name="wardrobes"
+                    placeholder="enter Wardrobes" @if (!empty($order)) value="{{ $order->wardrobes }}" @endif>
 
                 <label for="animals">Animals</label>
-                <input class="form-control" style="height: 30px" type="number" name="animals" required
-                    placeholder="enter Animals">
+                <input class="form-control" style="height: 30px" type="number" name="animals"
+                    placeholder="enter Animals" @if (!empty($order)) value="{{ $order->animals }}" @endif>
 
                 <label for="adults">Adults</label>
-                <input class="form-control" style="height: 30px" type="number" name="adults" required
-                    placeholder="enter Adults">
+                <input class="form-control" style="height: 30px" type="number" name="adults" placeholder="enter Adults"
+                    @if (!empty($order)) value="{{ $order->adults }}" @endif>
 
                 <label for="children">Children</label>
-                <input class="form-control" style="height: 30px" type="number" name="children" required
-                    placeholder="enter Children">
+                <input class="form-control" style="height: 30px" type="number" name="children"
+                    placeholder="enter Children" @if (!empty($order)) value="{{ $order->children }}" @endif>
 
                 <div class="container">
                     <div class="row">

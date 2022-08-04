@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Client extends Model
 {
@@ -20,4 +21,9 @@ class Client extends Model
         'last_name',
         'email'
     ];
+
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
 }

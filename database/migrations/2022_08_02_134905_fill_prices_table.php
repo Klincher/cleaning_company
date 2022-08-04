@@ -80,6 +80,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Price::truncate();
     }
 };
