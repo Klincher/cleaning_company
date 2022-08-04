@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('clients');
-            $table->enum('status', ['created', 'paid', 'completed', 'canceled']);//enum
+            $table->enum('status', ['created', 'paid', 'completed', 'canceled'])->default('created');
             $table->double('sum');
             $table->string('address');
             $table->integer('area');

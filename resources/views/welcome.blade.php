@@ -85,6 +85,11 @@
                                 <button class="btn btn-primary" type="submit" name="save">Calculate order</button>
                             </div>
                         </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="d-flex justify-content-end">
+                                <h4>Status: @if (!empty($order)) {{ $order->status }} @endif</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

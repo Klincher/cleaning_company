@@ -17,9 +17,10 @@ class OrderController extends Controller
 
         if ($id = session('order_id')) {
             $order = Order::find($id);
+            return view('welcome', ['order' => $order, 'rooms' => $rooms, 'bathrooms' => $bathrooms, 'kitchens' => $kitchens]);
         }
 
-        return view('welcome', ['order' => $order, 'rooms' => $rooms, 'bathrooms' => $bathrooms, 'kitchens' => $kitchens]);
+        return view('welcome', ['rooms' => $rooms, 'bathrooms' => $bathrooms, 'kitchens' => $kitchens]);
     }
 
     public function store(Request $request)
