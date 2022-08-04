@@ -46,8 +46,13 @@ class OrderController extends Controller
             ]
         );
 
-        $order = new Order;
-        $order->client_id = $client->id;
+        if ($request->session()->has('order_id')) {
+            $order = Order::find(intval(session()->get('order_id')));
+        } else {
+            $order = new Order;
+            $order->client_id = $client->id;
+        }
+
         $order->status = 'created';
         $order->sum = $sum;
         $order->address = $request->address;
