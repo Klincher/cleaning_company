@@ -13,4 +13,11 @@ class ResultController extends Controller
 
         return view('result', ['sum' => $sum]);
     }
+
+    public function clear(Request $request)
+    {
+        $request->session()->flush();
+
+        return redirect()->route('welcome');
+    }
 }

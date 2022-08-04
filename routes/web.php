@@ -37,3 +37,4 @@ Route::prefix('orders')->group(function () {
 });
 
 Route::get('result/{id}', [ResultController::class, 'index'])->name('result');
+Route::get('clear', [ResultController::class, 'clear'])->name('clear');

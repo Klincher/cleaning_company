@@ -10,7 +10,7 @@
                 <label for="phone">Phone</label>
                 <input class="form-control @error('phone') is-invalid @enderror" style="height: 30px" type="text"
                     name="phone" required placeholder="enter Phone" @if (!empty($order))
-                    value="{{ $order->client->phone }}" @endif>
+                    value="{{ $order->client->phone ?? old('phone') }}" @endif>
                 @error('phone')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -18,7 +18,7 @@
                 <label for="first_name">First Name</label>
                 <input class="form-control @error('first_name') is-invalid @enderror" style="height: 30px" type="text"
                     name="first_name" required placeholder="enter First Name" @if (!empty($order))
-                    value="{{ $order->client->first_name }}" @endif>
+                    value="{{ $order->client->first_name ?? old('first_name') }}" @endif>
                 @error('first_name')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -26,7 +26,7 @@
                 <label for="last_name">Last Name</label>
                 <input class="form-control @error('last_name') is-invalid @enderror" style="height: 30px" type="text"
                     name="last_name" required placeholder="ente Last Name" @if (!empty($order))
-                    value="{{ $order->client->last_name }}" @endif>
+                    value="{{ $order->client->last_name ?? old('last_name') }}" @endif>
                 @error('last_name')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -34,7 +34,7 @@
                 <label for="email">Email</label>
                 <input class="form-control @error('email') is-invalid @enderror" style="height: 30px" type="email"
                     name="email" required placeholder="enter Email" @if (!empty($order))
-                    value="{{ $order->client->email }}" @endif>
+                    value="{{ $order->client->email ?? old('email') }}" @endif>
                 @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -45,14 +45,14 @@
                 <label for="address">Address</label>
                 <input class="form-control @error('address') is-invalid @enderror" style="height: 30px" type="text"
                     name="address" required placeholder="enter Address" @if (!empty($order))
-                    value="{{ $order->address }}" @endif>
+                    value="{{ $order->address ?? old('address') }}" @endif>
                 @error('address')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
 
                 <label for="area">Area</label>
                 <input class="form-control @error('area') is-invalid @enderror" style="height: 30px" type="number"
-                    name="area" required placeholder="enter Area" @if (!empty($order)) value="{{ $order->area }}"
+                    name="area" required placeholder="enter Area" @if (!empty($order)) value="{{ $order->area ?? old('area') }}"
                     @endif>
                 @error('area')
                 <div class="alert alert-danger">{{ $message }}</div>

@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Order;
+use Laravel\Cashier\Billable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Client extends Model
 {
     use HasFactory;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
