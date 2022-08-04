@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Price;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreOrderRequest;
 
 class OrderController extends Controller
 {
@@ -23,7 +24,7 @@ class OrderController extends Controller
         return view('welcome', ['rooms' => $rooms, 'bathrooms' => $bathrooms, 'kitchens' => $kitchens]);
     }
 
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
 
         $options = ['area', 'rooms', 'bathrooms', 'kitchens', 'fridges', 'wardrobes', 'animals', 'adults', 'children'];
