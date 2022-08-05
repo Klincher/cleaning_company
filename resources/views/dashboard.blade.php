@@ -15,6 +15,7 @@
                             <th class="px-4 py-2">{{ __('Email') }}</th>
                         </tr>
                     </thead>
+                    @foreach ($clients as $client)
                     <tr>
                         <td class="border px-4 py-2">{{ $client->id }}</td>
                         <td class="border px-4 py-2">{{ $client->phone }}</td>
@@ -22,12 +23,14 @@
                         <td class="border px-4 py-2">{{ $client->last_name }}</td>
                         <td class="border px-4 py-2">{{ $client->email }}</td>
                     </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
     </div>
 </div>
 
+<form action="{{ route('dashboard.update') }}" method="post">
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -50,6 +53,7 @@
                             <th class="px-4 py-2">Children</th>
                         </tr>
                     </thead>
+                    @foreach ($orders as $order)
                     <tr>
                         <td class="border px-4 py-2">{{ $order->id }}</td>
                         <td class="border px-4 py-2">{{ $order->client_id }}</td>
@@ -65,32 +69,12 @@
                         <td class="border px-4 py-2">{{ $order->adults }}</td>
                         <td class="border px-4 py-2">{{ $order->children }}</td>
                     </tr>
+                    @endforeach
                 </table>
             </div>
         </div>
     </div>
 </div>
-<form action="{{ route('dashboard.update') }}" method="post">
-    @csrf
-    <div class="container">
-        <div class="row d-flex justify-content-center mt-3">
-            <div class="col-1">
-                <h3>Status: </h3>
-            </div>
-            <div class="col-2">
-                <select class="form-control" name="status">
-                    <option value="created">Created</option>
-                    <option value="paid">Paid</option>
-                    <option value="completed">Completed</option>
-                    <option value="canceled">Canceled</option>
-                </select>
-            </div>
-            <div class="col-1">
-                
-                    <button type="submit" class="btn btn-primary" name="save">Change</button>
-                
-            </div>
-        </div>
-    </div>
 </form>
+
 @endsection

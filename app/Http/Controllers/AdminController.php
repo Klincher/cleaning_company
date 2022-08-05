@@ -10,10 +10,10 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $client = Client::latest('updated_at')->first();
-        $order = Order::latest('updated_at')->first();
+        $clients = Client::orderByDesc('updated_at')->get();
+        $orders = Order::orderByDesc('updated_at')->get();
 
-        return view('dashboard', ['client' => $client, 'order' => $order]);
+        return view('dashboard', ['clients' => $clients, 'orders' => $orders]);
     }
 
     public function update(Request $request)
