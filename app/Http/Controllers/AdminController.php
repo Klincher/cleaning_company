@@ -13,8 +13,18 @@ class AdminController extends Controller
         $client = Client::latest('updated_at')->first();
         $order = Order::latest('updated_at')->first();
 
-// dd($clients);
-
         return view('dashboard', ['client' => $client, 'order' => $order]);
+    }
+
+    public function update(Request $request)
+    {
+        // $order = Order::find($request->order_id);
+        $order = Order::latest('updated_at')->first();
+        $order->status = $request->status;
+        $order->save();
+
+        // return response()->json($order->refresh(), 200);
+
+        return redirect()->route('dashboard');
     }
 }

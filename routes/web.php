@@ -42,3 +42,5 @@ Route::get('result/{id}', [ResultController::class, 'index'])->name('result');
 Route::get('clear', [ResultController::class, 'clear'])->name('clear');
 
 Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+Route::post('dashboard', [AdminController::class, 'update'])->middleware(['auth'])->name('dashboard.update');

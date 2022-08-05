@@ -53,16 +53,7 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $order->id }}</td>
                         <td class="border px-4 py-2">{{ $order->client_id }}</td>
-                        <td class="border px-4 py-2">
-                            <form action="" method="post">
-                                <select class="form-control" name="status">
-                                    <option value="created">Created</option>
-                                    <option value="paid">Paid</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="canceled">Canceled</option>
-                                </select>
-                            </form>
-                        </td>
+                        <td class="border px-4 py-2">{{ $order->status }}</td>
                         <td class="border px-4 py-2">{{ $order->sum }}</td>
                         <td class="border px-4 py-2">{{ $order->area }}</td>
                         <td class="border px-4 py-2">{{ $order->rooms }}</td>
@@ -79,4 +70,27 @@
         </div>
     </div>
 </div>
+<form action="{{ route('dashboard.update') }}" method="post">
+    @csrf
+    <div class="container">
+        <div class="row d-flex justify-content-center mt-3">
+            <div class="col-1">
+                <h3>Status: </h3>
+            </div>
+            <div class="col-2">
+                <select class="form-control" name="status">
+                    <option value="created">Created</option>
+                    <option value="paid">Paid</option>
+                    <option value="completed">Completed</option>
+                    <option value="canceled">Canceled</option>
+                </select>
+            </div>
+            <div class="col-1">
+                
+                    <button type="submit" class="btn btn-primary" name="save">Change</button>
+                
+            </div>
+        </div>
+    </div>
+</form>
 @endsection
