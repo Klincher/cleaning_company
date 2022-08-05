@@ -12,9 +12,9 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $rooms = ['1 room', '2 rooms', '3 rooms', '4 rooms', '5 rooms', '6 rooms', '7 rooms', '8 rooms', '9 rooms', '10 rooms'];
-        $bathrooms = ['0.5' => 'Toilet', '1' => 'Bathroom', '1.5' => 'Combined bathroom'];
-        $kitchens = ['1 kitchen', '2 kitchens', '3 kitchens', '4 kitchens', '5 kitchens'];
+        $rooms = ['No rooms', '1 room', '2 rooms', '3 rooms', '4 rooms', '5 rooms', '6 rooms', '7 rooms', '8 rooms', '9 rooms', '10 rooms'];
+        $bathrooms = ['0'=> 'No toilets', '0.5' => 'Toilet', '1' => 'Bathroom', '1.5' => 'Combined bathroom'];
+        $kitchens = ['No kitchens', '1 kitchen', '2 kitchens', '3 kitchens', '4 kitchens', '5 kitchens'];
 
         if ($id = session('order_id')) {
             $order = Order::find($id);

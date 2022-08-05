@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ResultController;
 
@@ -37,4 +38,7 @@ Route::prefix('orders')->group(function () {
 });
 
 Route::get('result/{id}', [ResultController::class, 'index'])->name('result');
+
 Route::get('clear', [ResultController::class, 'clear'])->name('clear');
+
+Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');

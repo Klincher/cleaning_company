@@ -61,7 +61,7 @@
                 <label for="rooms">Rooms</label>
                 <select class="form-control" name="rooms">
                     @foreach ($rooms as $key => $room)
-                    <option value="{{ $key + 1 }}" @if (!empty($order) && $order->rooms === $key + 1) selected
+                    <option value="{{ $key }}" @if (!empty($order) && $order->rooms === $key) selected
                         @endif>{{ $room }}</option>
                     @endforeach
                 </select>
@@ -77,7 +77,7 @@
                 <label for="kitchens">Kitchens</label>
                 <select class="form-control" name="kitchens">
                     @foreach ($kitchens as $key => $kitchen)
-                    <option value="{{ $key + 1 }}" @if (!empty($order) && $order->kitchens === $key + 1) selected
+                    <option value="{{ $key }}" @if (!empty($order) && $order->kitchens === $key) selected
                         @endif>{{ $kitchen }}</option>
                     @endforeach
                 </select>
