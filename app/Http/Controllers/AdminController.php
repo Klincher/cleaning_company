@@ -12,8 +12,9 @@ class AdminController extends Controller
     {
         $clients = Client::orderByDesc('updated_at')->get();
         $orders = Order::orderByDesc('updated_at')->get();
+        $statuses = ['created', 'paid', 'completed', 'canceled'];
 
-        return view('dashboard', ['clients' => $clients, 'orders' => $orders]);
+        return view('dashboard', ['clients' => $clients, 'orders' => $orders, 'statuses' => $statuses]);
     }
 
     public function update(Request $request)
