@@ -47,6 +47,11 @@
                     </tr>
                     @endforeach
                 </table>
+
+                <div class="d-flex justify-content-center">
+                    {{ $clients->links() }}
+                </div>
+
             </div>
         </div>
     </div>
@@ -102,6 +107,11 @@
                         </tr>
                         @endforeach
                     </table>
+
+                    <div class="d-flex justify-content-center">
+                        {{ $orders->links() }}
+                    </div>
+
                 </div>
             </div>
         </div>
