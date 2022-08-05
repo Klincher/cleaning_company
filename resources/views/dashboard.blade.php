@@ -1,11 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row d-flex justify-content-center mt-2">
+        <div class="card col-md-3 m-2">
+            <div class="card-body">
+                <h3>Sum of this month: {{ $thisMonth }}</h3>
+            </div>
+        </div>
+
+        <div class="card col-md-3 m-2">
+            <div class="card-body">
+                <h3>Amount of orders: {{ $orderCount }}</h3>
+            </div>
+        </div>
+
+        <div class="card col-md-3 m-2">
+            <div class="card-body">
+                <h3>Average sum of this month: {{ $averageSum }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
-                <table class="table">
+                <table class="table mt-2">
                     <thead>
                         <tr>
                             <th class="px-4 py-2">{{ __('Id') }}</th>
@@ -35,13 +57,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <table class="table">
+                    <table class="table mt-2">
                         <thead>
                             <tr>
                                 <th class="px-4 py-2">Id</th>
                                 <th class="px-4 py-2">Client Id</th>
                                 <th class="px-4 py-2">Status</th>
                                 <th class="px-4 py-2">Sum</th>
+                                <th class="px-4 py-2">Address</th>
                                 <th class="px-4 py-2">Area</th>
                                 <th class="px-4 py-2">Rooms</th>
                                 <th class="px-4 py-2">Bathrooms</th>
@@ -58,13 +81,15 @@
                             <td class="border px-4 py-2">{{ $order->id }}</td>
                             <td class="border px-4 py-2">{{ $order->client_id }}</td>
                             <td class="border px-4 py-2">
-                                <select class="form-control" name="status" id="">
+                                <select class="form-control" name="status" id="status">
                                     @foreach ($statuses as $status)
-                                        <option value="{{ $status }}" @if ($order->status === $status) selected @endif>{{ $status }}</option>
+                                    <option value="{{ $status }}" @if ($order->status === $status) selected @endif>{{
+                                        $status }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td class="border px-4 py-2">{{ $order->sum }}</td>
+                            <td class="border px-4 py-2">{{ $order->address }}</td>
                             <td class="border px-4 py-2">{{ $order->area }}</td>
                             <td class="border px-4 py-2">{{ $order->rooms }}</td>
                             <td class="border px-4 py-2">{{ $order->bathrooms }}</td>
@@ -83,4 +108,7 @@
     </div>
 </form>
 
+<script>
+
+</script>
 @endsection
