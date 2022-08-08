@@ -60,6 +60,7 @@
 
                 <label for="rooms">Rooms</label>
                 <select class="form-control" name="rooms">
+                    <option value="" disabled selected>Rooms select</option>
                     @foreach ($rooms as $key => $room)
                     <option value="{{ $key }}" @if (!empty($order) && $order->rooms === $key) selected
                         @endif>{{ $room }}</option>
@@ -68,6 +69,7 @@
 
                 <label for="bathrooms">Bathrooms</label>
                 <select class="form-control" name="bathrooms">
+                    <option value="" disabled selected>Bathrooms select</option>
                     @foreach ($bathrooms as $key => $bathroom)
                     <option value="{{ $key }}" @if (!empty($order) && $order->bathrooms === floatval($key)) selected
                         @endif>{{ $bathroom }}</option>
@@ -76,6 +78,7 @@
 
                 <label for="kitchens">Kitchens</label>
                 <select class="form-control" name="kitchens">
+                    <option value="" disabled selected>Kitchens select</option>
                     @foreach ($kitchens as $key => $kitchen)
                     <option value="{{ $key }}" @if (!empty($order) && $order->kitchens === $key) selected
                         @endif>{{ $kitchen }}</option>
