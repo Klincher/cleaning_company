@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ResultController;
 
@@ -41,6 +42,10 @@ Route::get('result/{id}', [ResultController::class, 'index'])->name('result');
 
 Route::get('clear', [ResultController::class, 'clear'])->name('clear');
 
-Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::post('dashboard', [AdminController::class, 'update'])->middleware(['auth'])->name('dashboard.update');
+
+Route::get('editor', [PriceController::class, 'index'])->middleware(['auth'])->name('editor');
+
+Route::post('editor', [PriceController::class, 'update'])->middleware(['auth'])->name('editor.update');
