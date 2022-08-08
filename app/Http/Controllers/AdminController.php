@@ -11,8 +11,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $clients = Client::orderByDesc('updated_at')->paginate(2);
-        $orders = Order::orderByDesc('updated_at')->paginate(2);
+        $clients = Client::orderByDesc('updated_at')->paginate(5);
+        $orders = Order::orderByDesc('updated_at')->paginate(5);
         $statuses = ['created', 'paid', 'completed', 'canceled'];
 
         $firstDayOfThisMonth = Carbon::now()->startOfMonth();
@@ -27,16 +27,22 @@ class AdminController extends Controller
             ->avg('sum');
 
         $orderCount = Order::where('created_at', '>=', $firstDayOfThisMonth)
-        ->where('created_at', '<=', $lastDayOfThisMonth)
-        ->count();
+            ->where('created_at', '<=', $lastDayOfThisMonth)
+            ->count();
 
-        return view('dashboard', ['clients' => $clients, 'orders' => $orders, 'statuses' => $statuses, 'thisMonth' => $thisMonth, 'averageSum' => $averageSum, 'orderCount' => $orderCount]);
+        return view('dashboard', [
+            'clients' => $clients,
+            'orders' => $orders,
+            'statuses' => $statuses,
+            'thisMonth' => $thisMonth,
+            'averageSum' => $averageSum,
+            'orderCount' => $orderCount
+        ]);
     }
 
     public function update(Request $request)
     {
-        // $order = Order::find($request->order_id);
-        $order = Order::latest('updated_at')->first();
+        $order = Order::find($request->order_id);
         $order->status = $request->status;
         $order->save();
 
